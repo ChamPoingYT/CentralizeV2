@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'Accueil</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDmK6cvv8EV5gGnKH57ynzkogArgo5ua6s",
+            authDomain: "centralize-6d48c.firebaseapp.com",
+            projectId: "centralize-6d48c",
+            storageBucket: "centralize-6d48c.appspot.com",
+            messagingSenderId: "878157662994",
+            appId: "1:878157662994:web:a4114f2ac8881b2d44c1cb"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
     <header>
@@ -26,7 +43,7 @@
 
         <section id="connexion">
             <h2>Connexion</h2>
-            <form action="/login" method="post">
+            <form id="login-form">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 
@@ -39,7 +56,7 @@
 
         <section id="inscription">
             <h2>S'enregistrer</h2>
-            <form action="/register" method="post">
+            <form id="register-form">
                 <label for="new-email">Email:</label>
                 <input type="email" id="new-email" name="new-email" required>
                 
@@ -53,5 +70,42 @@
     <footer>
         <p>&copy; 2024 Notre Application. Tous droits réservés.</p>
     </footer>
+    <script>
+        // Authentication logic for login
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                    alert('Connexion réussie');
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert('Erreur: ' + errorMessage);
+                });
+        });
+
+        // Authentication logic for registration
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('new-email').value;
+            var password = document.getElementById('new-password').value;
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                    alert('Inscription réussie');
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert('Erreur: ' + errorMessage);
+                });
+        });
+    </script>
 </body>
 </html>
