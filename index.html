@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur Notre Application</h1>
+        <nav>
+            <ul>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#connexion">Connexion</a></li>
+                <li><a href="#inscription">S'enregistrer</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="concept">
+            <h2>Le Concept de l'Application</h2>
+            <p>Notre application offre une plateforme innovante pour [décrire brièvement ce que fait l'application].</p>
+            <img src="image_concept.jpg" alt="Illustration du concept de l'application">
+        </section>
+
+        <section id="connexion">
+            <h2>Connexion</h2>
+            <form action="/login" method="post">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Se connecter</button>
+            </form>
+        </section>
+
+        <section id="inscription">
+            <h2>S'enregistrer</h2>
+            <form action="/register" method="post">
+                <label for="new-email">Email:</label>
+                <input type="email" id="new-email" name="new-email" required>
+                
+                <label for="new-password">Mot de passe:</label>
+                <input type="password" id="new-password" name="new-password" required>
+                
+                <button type="submit">S'enregistrer</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Notre Application. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
